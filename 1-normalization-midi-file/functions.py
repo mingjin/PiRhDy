@@ -159,6 +159,7 @@ def normalization_midi_file(dirs):
         key_profile = pickle.load(open('key_profile.pickle', 'rb'))
         for file in file_lists:
             try:
+                print(name)
                 midi_data = PrettyMIDI(file)
                 # time_signature changes
                 ts_check = 1
@@ -174,6 +175,7 @@ def normalization_midi_file(dirs):
                             break
                         else:
                             T_times.append(time.time)
+                print('----1-----')
                 if ts_check:
                     # check resolution
                     resolution = midi_data.resolution
@@ -201,6 +203,7 @@ def normalization_midi_file(dirs):
                         # get changing times
                         t_times = tempo_changes[0].tolist()
 
+                    print('----2-----')
                     # estimate the real key signature changes
                     note_groups = [[] * len(K_times)]
                     for instrument in midi_data.instruments:
@@ -222,6 +225,7 @@ def normalization_midi_file(dirs):
                         else:
                             key_signature_changes[i].key_number = major_index
 
+                    print('----3-----')
                     instrument_info = []
                     for instrument in midi_data.instruments:
                         if instrument.is_drum:
