@@ -72,9 +72,9 @@ def load_matrix(file):
 
 def collect_chords(name):
     # a pickle file that contains all file names of the "matrix/name" dir, using write_filenames function
-    file_list = pickle.load(open('filenames/matrix/{}'.format(name), 'rb'))
+    file_list = pickle.load(open('../filenames/matrix/{}'.format(name), 'rb'))
     # a file contains all chords in this dir
-    file_chord = 'chords/{}'.format(name)
+    file_chord = '../chords/{}'.format(name)
     chord_dict = [['over number']]
     chord_count = [0]
 
@@ -109,9 +109,9 @@ def collect_chords(name):
 def merge_chords():
     chord_dict = []
     chord_count = []
-    names = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+    names = ['0']#, '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
     for name in names:
-        data = np.load('chords/{}.npz'.format(name), allow_pickle=True)
+        data = np.load('../chords/{}.npz'.format(name), allow_pickle=True)
         dict = data['chord_dict']
         count = data['chord_count']
         for idx, chord in enumerate(dict):

@@ -47,7 +47,7 @@ def write_filenames(file_path, names, name_path, use_names):
 
 def matrix_to_sequence(name):
     # a pickle file that contains all file names of the "matrix/name" dir, using write_filenames function
-    file_list = pickle.load(open('filenames/matrix/{}'.format(name), 'rb'))
+    file_list = pickle.load(open('../filenames/matrix/{}'.format(name), 'rb'))
     for idx, file in enumerate(file_list):
         print(idx)
         rewrite_file(file)
@@ -121,7 +121,7 @@ def add_note_to_melody(matrix, note, step):
 
 def rewrite_file(file):
     # rewrite matrix as quadruple (chroma, octave, velocity, state) sequence
-    root_path = '/sequence/'
+    root_path = '../sequence/'
     chord_dict = np.load('../3-chord2chroma/chord_dict.npz', allow_pickle=True)['chord_dict']
     chord_index = np.load('../3-chord2chroma/chord_index.npz', allow_pickle=True)['chord_index']
     info_dict = {}
