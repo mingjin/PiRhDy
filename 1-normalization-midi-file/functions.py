@@ -147,10 +147,13 @@ def time_to_beat(start, end, t_times, tempo_changes):
 def normalization_midi_file(dirs):
     for name in dirs:
         # a file that contains all file names of the lakh dataset, using write_filenames function
-        file_lists = pickle.load(open('filenames/lakh_dataset/{}'.format(name), 'rb'))
+        file_lists = pickle.load(open('../filenames/lakh_dataset/{}'.format(name), 'rb'))
 
         # dir for normalized files
-        root_path = 'dataset/lakh_normalized/{}/'.format(name)
+        root_path = '../dataset/lakh_normalized/{}/'.format(name)
+
+        if not os.path.isdir(root_path):
+            os.mkdir(root_path)
 
         # allowed time signature, covering more than 90% of the dataset
         time_list = [4 / 4, 2 / 4, 3 / 4, 1 / 4, 1 / 8, 6 / 8, 3 / 8, 5 / 8]
