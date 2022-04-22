@@ -47,18 +47,19 @@ def get_noset_notes(matrix):
     return notes
 
 def get_token_dataset(name):
-    file_list = pickle.load(open('/filenames/sequence/{}'.format(name), 'rb'))
+    file_list = pickle.load(open('../filenames/sequence/{}'.format(name), 'rb'))
 
 
-    melody_train_path = open('/dataset/token_dataset/melody_train_{}'.format(name), 'ab')
-    melody_test_path = open('/dataset/token_dataset/melody_test_{}'.format(name), 'ab')
+    melody_train_path = open('../dataset/token_dataset/melody_train_{}'.format(name), 'ab')
+    melody_test_path = open('../dataset/token_dataset/melody_test_{}'.format(name), 'ab')
 
-    harmony_train_path = open('/dataset/token_dataset/harmony_train_{}'.format(name), 'ab')
-    harmony_test_path = open('/dataset/token_dataset/harmony_test_{}'.format(name), 'ab')
+    harmony_train_path = open('../dataset/token_dataset/harmony_train_{}'.format(name), 'ab')
+    harmony_test_path = open('../dataset/token_dataset/harmony_test_{}'.format(name), 'ab')
 
 
-    label_train_path = open('/dataset/token_dataset/label_train_{}'.format(name), 'ab')
-    label_test_path = open('/dataset/token_dataset/label_test_{}'.format(name), 'ab')
+    label_train_path = open('../dataset/token_dataset/label_train_{}'.format(name), 'ab')
+    label_test_path = open(
+        '../dataset/token_dataset/label_test_{}'.format(name), 'ab')
 
     for file in file_list:
 
