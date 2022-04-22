@@ -1,3 +1,4 @@
+import os
 import pickle
 import numpy as np
 import json
@@ -10,6 +11,43 @@ pitch_number = 655
 octave_number = 11
 velocity_number = 10
 state_number = 3
+
+
+def get_file_path(root_path, file_list, dir_list):
+    # get all file names and dir names in this folder
+    dir_or_files = os.listdir(root_path)
+    for dir_file in dir_or_files:
+        # get file or dir name
+        dir_file_path = os.path.join(root_path, dir_file)
+        # is a file or a dir
+        if os.path.isdir(dir_file_path):
+            dir_list.append(dir_file_path)
+            # get all paths
+            get_file_path(dir_file_path, file_list, dir_list)
+        else:
+            file_list.append(dir_file_path)
+
+
+# get all file names
+def write_filenames(file_path, names, name_path, use_names):
+    if use_names:
+        for name in names:
+            print(name)
+            # root path
+            root_path = file_path + '{}'.format(name)
+            file_list = []
+            dir_list = []
+            file_name = open(name_path + '{}'.format(name), "wb")
+            get_file_path(root_path, file_list, dir_list)
+            pickle.dump(file_list, file_name)
+            file_name.close()
+    else:
+        file_list = []
+        dir_list = []
+        file_name = open(name_path, "wb")
+        get_file_path(file_path, file_list, dir_list)
+        pickle.dump(file_list, file_name)
+        file_name.close()
 
 
 def reconstruct_sparse(target_dict, name):
