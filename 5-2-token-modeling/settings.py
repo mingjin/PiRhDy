@@ -14,6 +14,7 @@ import os
 def run_script(gpu_names=None, model_name='overall', ratio=1):
     # model configurations
     tf.compat.v1.disable_eager_execution()
+    tf.compat.v1.experimental.output_all_intermediates(True)
     tf.keras.backend.clear_session()
     # tf.config.optimizer.set_jit(False)  # Start with XLA disabled.
     gpu_num = 0
@@ -29,8 +30,8 @@ def run_script(gpu_names=None, model_name='overall', ratio=1):
     test_num = 135400000
 
     # dataset paths
-    train_path = '../token_dataset/train'
-    test_path = '../token_dataset/test'
+    train_path = '../dataset/token_dataset/train'
+    test_path = '../dataset/token_dataset/test'
 
     # model settings
     model_name_list = {"overall": token_modeling,
@@ -64,7 +65,7 @@ def run_script(gpu_names=None, model_name='overall', ratio=1):
     # callback settings
     model_path = "best_models/"
     filepath = "/best"
-    
+
     if not os.path.isdir(model_path + model_name+'_' + str(ratio)):
         os.mkdir(model_path + model_name+'_' + str(ratio))
 
