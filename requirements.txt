@@ -1,3 +1,5 @@
 pretty-midi
 numpy
 scipy
+pandas
+tensorflow
