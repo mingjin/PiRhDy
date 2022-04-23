@@ -29,8 +29,8 @@ def run_script(gpu_names=None, model_name='overall', ratio=1):
     test_num = 135400000
 
     # dataset paths
-    train_path = 'token_dataset/train'
-    test_path = 'token_dataset/test'
+    train_path = '../token_dataset/train'
+    test_path = '../token_dataset/test'
 
     # model settings
     model_name_list = {"overall": token_modeling,
