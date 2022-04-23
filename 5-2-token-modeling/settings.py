@@ -64,6 +64,10 @@ def run_script(gpu_names=None, model_name='overall', ratio=1):
     # callback settings
     model_path = "best_models/"
     filepath = "/best"
+    
+    if not os.path.isdir(model_path + model_name+'_' + str(ratio)):
+        os.mkdir(model_path + model_name+'_' + str(ratio))
+
     my_checkpoint = ModelCheckpoint(model_path + model_name+'_' + str(ratio) + filepath,
                                     monitor='test_acc',
                                     save_best_only=True,
