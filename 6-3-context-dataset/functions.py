@@ -233,6 +233,7 @@ def generate_next_phrase_melody(name):
         negative_sample = np.append(negative_sample, 0)
         np.savetxt(train, [negative_sample], delimiter=',', fmt='%u')
     train.close()
+    #
     # get test 
     print("get test")
     test_num = len(periods_test)
