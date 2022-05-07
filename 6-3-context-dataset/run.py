@@ -1,4 +1,4 @@
-from functions import generate_next_phrase_melody, generate_accompaniment
+from functions import generate_next_phrase_melody, generate_accompaniment, write_filenames
 import argparse
 dirs = ['0']
 #将dataset/bar数据集里的文件形成目录到filenames/bar
