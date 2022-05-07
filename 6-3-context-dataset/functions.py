@@ -168,9 +168,18 @@ def generate_accompaniment(name):
 
 
 def generate_next_phrase_melody(name):
-    file_list = pickle.load(open('filenames/{}'.format(name), 'rb'))
-    train = open('context_next/train_{}'.format(name), 'ab')
-    test = open('context_next/test_{}'.format(name), 'ab')
+    print("generate_next_phrase_melody is starting")
+    file_list = pickle.load(open('../filenames/phrase/{}'.format(name), 'rb'))
+    train_path = "../dataset/context_next/"
+    #创建目录
+    if not os.path.isdir(train_path):
+        os.mkdir(train_path)
+    train = open(train_path+'train_{}'.format(name), 'ab')
+    test = open(train_path+'test_{}'.format(name), 'ab')
+
+    #file_list = pickle.load(open('filenames/{}'.format(name), 'rb'))
+    #train = open('context_next/train_{}'.format(name), 'ab')
+    #test = open('context_next/test_{}'.format(name), 'ab')
 
     periods_train = []
     periods_test = []
