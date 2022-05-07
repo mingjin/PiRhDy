@@ -198,6 +198,7 @@ def generate_next_phrase_melody(name):
             else:
                 periods_train.append([file_id, melody_period])
             idx += 1
+
     # generating train dataset, 1:1
     print("get train")
     train_num = len(periods_train)
