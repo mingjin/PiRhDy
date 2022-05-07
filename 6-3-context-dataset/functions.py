@@ -2,6 +2,8 @@ import pickle
 import numpy as np
 import random
 import os
+import faulthandler
+faulthandler.enable()
 
 
 def get_file_path(root_path, file_list, dir_list):
