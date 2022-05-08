@@ -190,11 +190,13 @@ def generate_next_phrase_melody(name):
     for file_id, file in enumerate(file_list):
         if file_id > 2000:
             break
-        print(file_id)
+        print('fileid: '+str(file_id))
         idx = 0
         phrases = np.load(file, allow_pickle=True)
+        former = phrases[str(idx)]
         while str(idx + 1) in phrases:
-            former = phrases[str(idx)]
+            print('idx: ' + str(idx+1))
+            #former = phrases[str(idx)]
             latter = phrases[str(idx + 1)]
             # only consider melody track
             melody_period = [former[0:4, :], latter[0:4, :]]
@@ -204,6 +206,7 @@ def generate_next_phrase_melody(name):
             else:
                 periods_train.append([file_id, melody_period])
             idx += 1
+            former = latter
 
     # generating train dataset, 1:1
     print("get train")

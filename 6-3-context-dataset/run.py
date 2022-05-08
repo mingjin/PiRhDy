@@ -23,5 +23,6 @@ if __name__ == '__main__':
                      "acc": generate_accompaniment}
         for name in names_list:
             task_list[task_name](str(name))
+            task_list["acc"](str(name))
     except Exception as e:
         print(e)
