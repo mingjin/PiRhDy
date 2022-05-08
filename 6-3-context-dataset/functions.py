@@ -65,16 +65,21 @@ def remove_ids(idx, end):
 
 
 def generate_accompaniment(name):
-    file_list = pickle.load(open('/filenames/phrase/{}'.format(name), 'rb'))
+    file_list = pickle.load(open('../filenames/phrase/{}'.format(name), 'rb'))
     #    file_list = file_list[0:100]
-    train = open('context_acc/train_{}'.format(name), 'ab')
-    test = open('context_acc/test_{}'.format(name), 'ab')
+    train_path = '../dataset/context_acc/'
+    if not os.path.isdir(train_path):
+        os.mkdir(train_path)
+    train = open(train_path+'train_{}'.format(name), 'ab')
+    test = open(train_path+'test_{}'.format(name), 'ab')
     train_melody_harmony = []
     test_melody_harmony = []
     acc_num_list = []
     print("data handling")
     for file_id, file in enumerate(file_list):
-        #       print(file_id)
+        if file_id > 2000:
+            break
+        print(file_id)
         phrases = np.load(file, allow_pickle=True)
         phrase_id = 0
         if file_id % 10 == 0:
@@ -183,7 +188,9 @@ def generate_next_phrase_melody(name):
     periods_train = []
     periods_test = []
     for file_id, file in enumerate(file_list):
-
+        if file_id > 2000:
+            break
+        print(file_id)
         idx = 0
         phrases = np.load(file, allow_pickle=True)
         while str(idx + 1) in phrases:
